@@ -1,0 +1,28 @@
+1710986366369	geckodriver	INFO	Listening on 127.0.0.1:53798
+1710986369421	mozrunner::runner	INFO	Running command: "C:\\Users\\VIQG01X\\.cache\\selenium\\firefox\\win64\\124.0\\firefox.exe" "--marionette" "--remote-debuggin ...  "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\VIQG01X\\AppData\\Local\\Temp\\rust_mozprofilemCkaZf"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1710986369691	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1710986369770	Marionette	INFO	Listening on port 53806
+WebDriver BiDi listening on ws://127.0.0.1:53799
+Read port: 53806
+1710986369942	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:53799/devtools/browser/bdea3ede-7808-4722-a4f9-cd250decba7b
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 923))
+1710986371289	Marionette	INFO	Stopped listening on port 53806
+Dynamically enable window occlusion 1
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new AbortError("IndexedDB: main/anti-tracking-url-decoration list() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/hijack-blocklists getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/addons-manager-settings getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/search-telemetry-v2 getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/search-config getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/search-config-overrides getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/top-sites getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/sites-classification getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/url-classifier-skip-urls getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/translations-models getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/fingerprinting-protection-overrides getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+JavaScript error: resource://gre/modules/ExtensionSettingsStore.sys.mjs, line 113: Error: The ExtensionSettingsStore was accessed before the initialize promise resolved.

@@ -1,0 +1,17 @@
+1710985154321	geckodriver	INFO	Listening on 127.0.0.1:52297
+1710985157404	mozrunner::runner	INFO	Running command: "C:\\Users\\VIQG01X\\.cache\\selenium\\firefox\\win64\\124.0\\firefox.exe" "--marionette" "--remote-debuggin ...  "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\VIQG01X\\AppData\\Local\\Temp\\rust_mozprofilebMWXv3"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1710985157690	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1710985157768	Marionette	INFO	Listening on port 52306
+WebDriver BiDi listening on ws://127.0.0.1:52298
+Read port: 52306
+1710985157927	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:52298/devtools/browser/9f5ebf20-5981-417e-8191-f55405722345
+1710985159232	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1710985159370	Marionette	INFO	Stopped listening on port 52306
+Dynamically enable window occlusion 1
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
