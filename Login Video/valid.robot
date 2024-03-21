@@ -17,10 +17,11 @@ Valid Login
 Open Browser To Login page
      Open Browser     ${Login-Url}    ${Browser}
      Title Should Be    Login Page
+    
 
 Type In Username
     [Arguments]     ${username}
-    Input Text    id=username_field    ${username}
+    Input Text    //input[@id="username_field"]    ${username}
     
 Type In Password
     [Arguments]     ${password}
