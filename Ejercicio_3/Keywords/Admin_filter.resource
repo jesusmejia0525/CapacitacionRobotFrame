@@ -10,7 +10,7 @@ ${chkB_paginate}=    id=pagination
 ${Slt_page-template}=    id=page-template
 ${btn_viewB}=    id=filter-submit-button
 ${table_bokks}=    //table[@id='bookslisttable']
-
+${list_books}=    //ul[@id='filtered-bookslist-list']
   
 
 *** Keywords ***
@@ -24,7 +24,7 @@ Select Data Is
 
 Select Search and Input text
     [Arguments]    ${search}
-    IF  "${search}"!="${EMPTY}"
+    IF  $search!=""
         Select Checkbox    ${chkB_search}
         Input Text     ${Inp_search}     ${search}
     END
@@ -42,8 +42,15 @@ Clic View Books
     Click Button    ${btn_viewB}
 
 Capture Screemshot
-    Wait Until Element Is Visible    ${table_bokks}
-    Capture Element Screenshot    ${table_bokks}    filename=Tabla_Libros.png
+    ${Table}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${table_bokks}
+    IF  ${Table}
+        Capture Element Screenshot    ${table_bokks}    filename=Tabla_Libros.png
+    ELSE
+        Wait Until Element Is Visible    ${list_books}
+        Capture Element Screenshot    ${list_books}    filename=Lista_Libros.png
+    END
+    
+    
 
     
         
