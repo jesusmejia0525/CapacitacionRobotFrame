@@ -1,0 +1,16 @@
+# Robot Framework
+output.xml
+log.html
+report.html
+
+# Multimedia
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.webm
+*.mp4
+
+# Others
+.env
