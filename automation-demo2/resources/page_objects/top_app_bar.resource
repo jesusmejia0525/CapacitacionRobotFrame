@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${barra_texto}=    //div[@class='oxd-topbar-header']/div[@class='oxd-topbar-header-title']
-${menu}=    //li[@class='--active oxd-userdropdown']
+${menu}=    //*[@id="app"]/div[1]/div[1]/header/div[1]/div[2]/ul/li
 ${menu_opciones}=    //ul[@class='oxd-dropdown-menu']
 ${about}=    //ul[@class='oxd-dropdown-menu']/li/a[text()='About']
 ${support}=    //ul[@class='oxd-dropdown-menu']/li/a[text()='Support']    
@@ -12,6 +12,9 @@ ${ventana_fltante}=    //div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--whi
 ${cerrar_ventana}=    //button[@class='oxd-dialog-close-button oxd-dialog-close-button-position']
 ${pagina_Support}=    //div[@class='orangehrm-card-container']
 ${pagina_change}=    //div[@class='orangehrm-card-container']
+${pagina_change}=    //div[@class='orangehrm-card-container']/h6[text()='Update Password']
+${logout}=    //ul[@class='oxd-dropdown-menu']/li/a[text()='Logout']
+
 *** Keywords ***
 Texto debe ser
     Wait Until Element Is Visible    ${barra_texto}
@@ -20,7 +23,9 @@ Texto debe ser
     IF  $texto==$navbar_opcion
         Log To Console    TEXTO ES IGUAL
     END
+    
 Menu Usuario
+    Wait Until Element Is Visible    ${menu}
     Click Element    ${menu}
     Wait Until Element Is Visible    ${menu_opciones}
     Click Element    ${about}
@@ -34,3 +39,7 @@ Menu Usuario
     Click Element    ${menu}
     Wait Until Element Is Visible    ${menu_opciones}
     Click Element    ${change_password}
+    Wait Until Element Is Visible    ${pagina_change}
+    Click Element    ${menu}
+    Wait Until Element Is Visible    ${menu_opciones}
+    Click Element    ${logout}

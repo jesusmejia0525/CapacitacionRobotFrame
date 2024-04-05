@@ -4,7 +4,8 @@ Library    Collections
 Library    String
 
 *** Variables ***
-${Fila_tr}=    //div[@class='oxd-table-cell oxd-padding-cell']
+${filas}=    //div[@class='oxd-table-row oxd-table-row--with-border oxd-table-row--clickable']
+${celda_tr}=    //div[@class='oxd-table-cell oxd-padding-cell']
 ${Columna_th}=    //div[@class='oxd-table-header-cell oxd-padding-cell oxd-table-th']
 ${tabla}=    //div[@class='oxd-table orangehrm-employee-list']
 ${paginacion}=    //button[contains(@class, 'oxd-pagination-page-item--page')]
@@ -22,77 +23,88 @@ ${label_listas}    //div[contains(@class,'oxd-select-dropdown --positon-bottom')
 
 *** Keywords ***
 Leer datos de Empleados
-    Wait Until Element Is Visible    ${paginacion}
-    ${rows}=    Get Element Count    ${Fila_tr}
-    ${cols}=    Get Element Count    ${Columna_th}
-
-    @{columnas}    Get WebElements    ${Columna_th}
-    @{paginas}=    Get WebElements    ${paginacion}
-    
-   # Log To Console    Filas: ${rows}
-    #Log To Console    Columnos:${cols}
-    Log To Console    paginas:${paginas}
-
+    @{datos_tabla}=    Create List
+    Wait Until Element Is Visible    ${Columna_th}
+    @{columnas}    Get WebElements    ${Columna_th}  
     ${cells}=    Create List
     ${cabecera}=    Create List
     FOR    ${titulo}    IN    @{columnas}
         ${titulos}=    Get Element Attribute    ${titulo}    innerText
         Append To List    ${cabecera}    ${titulos}
-    END
-    Log To Console    Lista de titulos${cabecera}
-    
-    FOR    ${pagina}    IN    @{paginas}
-        Click Element    ${pagina}
-        Wait Until Element Is Visible    ${Fila_tr}
-        @{filas}=    Get WebElements    ${Fila_tr}
-        FOR    ${cell}    IN    @{filas}
-            Wait Until Element Is Visible    ${Fila_tr}
-            ${text}=    Get Element Attribute    ${cell}    innerText
-            #${data}=    Evaluate    [cell.text for cell in $datos]
-            Append To List   ${cells}    ${text} 
+    END 
+    ${res}=    Get Element Count    ${paginacion}
+    IF  ${res}>0
+        @{paginas}=    Get WebElements    ${paginacion}
+        FOR    ${pagina}    IN    @{paginas}
+            Click Element    ${pagina}
+            Wait Until Element Is Visible    ${celda_tr}
+            @{filas}=    Get WebElements    ${filas}
+            FOR    ${fila}    IN    @{filas}
+                @{valor_celdas}=    Create List
+                @{datosxfila}=    Evaluate    $fila.find_elements(by='xpath', value=".${celda_tr}")
+                FOR    ${celda}    IN    @{datosxfila}
+                    Append To List    ${valor_celdas}    ${celda.text}
+                END
+                ${dict}=    Evaluate    dict(zip($cabecera, $valor_celdas))
+                Append To List    ${datos_tabla}    ${dict}
+            END
+        END
+   ELSE   
+        Wait Until Element Is Visible    ${celda_tr}
+        @{filas}=    Get WebElements    ${filas}
+        FOR    ${fila}    IN    @{filas}
+            @{valor_celdas}=    Create List
+            @{datosxfila}=    Evaluate    $fila.find_elements(by='xpath', value=".${celda_tr}")
+            FOR    ${celda}    IN    @{datosxfila}
+                Append To List    ${valor_celdas}    ${celda.text}
+            END
+            ${dict}=    Evaluate    dict(zip($cabecera, $valor_celdas))
+            Append To List    ${datos_tabla}    ${dict}
         END
     END
-    Log to console   lista de datos:${cells}
+    Log to console   lista de datos:${datos_tabla}
 
-    # ${dict}=    Evaluate    dict(zip($cabecera, $cells))
-    # Log To Console    ${dict}
-
-#    RETURN   
 Buscar Empleado
     Wait Until Element Is Visible    ${tabla_busqueda}
     [Arguments]    ${nombre_emp}    ${id_emp}    ${estatus_emp}    ${Filtro_emp}    ${nombre_super}    ${titulo_puesto}    ${sub_unit}
     IF  $nombre_emp!=""
+        Wait Until Element Is Visible    ${inp_nombre}
         Input Text    ${inp_nombre}    ${nombre_emp}
     END
     IF  $id_emp!=""
+        Wait Until Element Is Visible    ${id_emp}
         Input Text    ${inp_idemp}    ${id_emp}
     END
     IF  $estatus_emp!=""
         Click Element    ${slt_estatus} 
         Wait Until Element Is Visible    ${opt_listas}
         ${lavel_opcion}=    Replace String    ${label_listas}    {placeholder}    ${estatus_emp}
+        Wait Until Element Is Visible    ${lavel_opcion}
         Click Element    ${lavel_opcion}
     END
     IF  $Filtro_emp!=""
         Click Element    ${slt_filtroEmp}
         Wait Until Element Is Visible    ${opt_listas}
-        ${lavel_opcion}=    Replace String    ${label_listas}    {placeholder}    ${Filtro_emp}
-        Click Element    ${lavel_opcion}
+        ${lavel_opcion2}=    Replace String    ${label_listas}    {placeholder}    ${Filtro_emp}
+        Wait Until Element Is Visible    ${lavel_opcion2}
+        Click Element    ${lavel_opcion2}
     END
     IF  $nombre_super!=""
+        Wait Until Element Is Visible    ${inp_nombre_super}
         Input Text    ${inp_nombre_super}    ${nombre_super}
     END
     IF  $titulo_puesto!=""
         Click Element    ${slt_tituloP}
         Wait Until Element Is Visible    ${opt_listas}
-        ${lavel_opcion}=    Replace String    ${label_listas}    {placeholder}    ${titulo_puesto}
-        Click Element    ${lavel_opcion}
+        ${lavel_opcion3}=    Replace String    ${label_listas}    {placeholder}    ${titulo_puesto}
+        Wait Until Element Is Visible    ${lavel_opcion3}
+        Click Element    ${lavel_opcion3}
     END
     IF  $sub_unit!=""
         Click Element    ${slt_subUni}
         Wait Until Element Is Visible    ${opt_listas}
-        ${lavel_opcion}=    Replace String    ${label_listas}    {placeholder}    ${sub_unit}
-        Click Element    ${lavel_opcion}
+        ${lavel_opcion4}=    Replace String    ${label_listas}    {placeholder}    ${sub_unit}
+        Wait Until Element Is Visible    ${lavel_opcion4}
+        Click Element    ${lavel_opcion4}
     END 
-
     Click Button    ${btn_buscar}
